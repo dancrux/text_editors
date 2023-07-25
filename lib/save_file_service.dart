@@ -7,13 +7,22 @@ abstract class SaveFileService {
 }
 
 class MethodChannelService implements SaveFileService {
-  //TODO1: Create a method channel
+  static const _methodChannel =
+      MethodChannel("com.example.text_editors/action");
 
   @override
   FutureOr<bool> saveFile(
       {required String fileName, required String text}) async {
-    //TODO2: Invoke a method, passing in neccessary arguments
-
-    throw UnimplementedError();
+    try {
+      return await _methodChannel.invokeMethod(
+        "createFile",
+        {
+          'fileName': fileName,
+          'content': text,
+        },
+      );
+    } catch (e) {
+      return false;
+    }
   }
 }

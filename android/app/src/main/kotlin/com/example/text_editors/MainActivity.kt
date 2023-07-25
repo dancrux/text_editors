@@ -12,7 +12,7 @@ class MainActivity : FlutterActivity() {
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
 
-        //TODO 1: Set a corresponding method channel
+        val methodChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channelName)
 
         //TODO 2: Set up method channel call handler
         }
